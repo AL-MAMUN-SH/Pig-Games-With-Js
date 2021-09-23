@@ -9,12 +9,28 @@ initialize()
 document.querySelector('.btn--roll').addEventListener('click',function(){
     if(gamePlaying){
          //RANDOM NUMBER SET
-    var dice = Math.floor(Math.random()*6)+1
-    // DISPLAY THE RESULT
-    var diceDom = document.querySelector('.dice')
-     diceDom.style.display = 'block'
-     diceDom.src='Dist/Picture/dice-'+dice+'.png'
+
+    var dice1 = Math.floor(Math.random()*6)+1
+    var dice2 = Math.floor(Math.random()*6)+1
+
+    // DISPLAY THE RESULT 2 Dice added 
+    document.getElementById('dice-1').style.display = 'block'
+    document.getElementById('dice-2').style.display = 'block'
+    document.getElementById('dice-1').src = 'Dist/Picture/dice-' + dice1 + '.png'
+    document.getElementById('dice-2').src = 'Dist/Picture/dice-' + dice2 + '.png'
+
+    // var diceDom = document.querySelector('.dice')
+    //  diceDom.style.display = 'block'
+    //  diceDom.src='Dist/Picture/dice-'+dice+'.png'
+
     //  UPDATE The Round Score IF the ROLLED NUMBER Was NOt a 1
+    if(dice1 !==1 && dice2 !==1){
+        roundscore += dice1+dice2
+        document.querySelector('#current-'+ activeplayer).textContent = roundscore
+    }else{
+         Nextplayer()
+    }
+    /*
     if(dice===6 && lastDice ===6){
         scores[activeplayer] = 0 
         document.querySelector('#score-' + activeplayer).textContent = '0'
@@ -26,7 +42,9 @@ document.querySelector('.btn--roll').addEventListener('click',function(){
          Nextplayer()
     }
       lastDice = dice
+      */
     }
+    
 })
 // Button Hold er Kaj Start
 document.querySelector('.btn--hold').addEventListener('click',function(){
@@ -50,9 +68,11 @@ document.querySelector('.btn--hold').addEventListener('click',function(){
         input = 100
     }  
     // Check Player Who will Win The Game 
+
     if(scores[activeplayer] >=winingscore){
         document.querySelector('#name-' + activeplayer).textContent = "Winner!"
-        document.querySelector('.dice').style.display = 'none'
+            document.getElementById('dice-1').style.display = 'none'
+            document.getElementById('dice-2').style.display = 'none'
         document.querySelector('.player-' + activeplayer + '-panel').classList.add('winner')
         document.querySelector('.player-' + activeplayer + '-panel').classList.remove('active')
         gamePlaying = false
@@ -76,7 +96,8 @@ function Nextplayer(){
        // CSS Add kore When i see Active Player added
    document.querySelector('.player-0-panel').classList.toggle('active')
    document.querySelector('.player-1-panel').classList.toggle('active')
-   document.querySelector('.dice').style.display = 'none'
+   document.getElementById('dice-1').style.display = 'none'
+   document.getElementById('dice-2').style.display = 'none'
 }
 // NEW BUTTON ER SAME WOR TAI NOTUN EKTA FUNCTION 
 function initialize(){
@@ -85,7 +106,8 @@ function initialize(){
     activeplayer = 0
     gamePlaying = true
 
-    document.querySelector('.dice').style.display = 'none'
+    document.getElementById('dice-1').style.display = 'none'
+    document.getElementById('dice-2').style.display = 'none'
     document.getElementById("score-0").textContent = '0'
     document.getElementById("score-1").textContent = '0'
     document.getElementById("current-0").textContent = '0'
