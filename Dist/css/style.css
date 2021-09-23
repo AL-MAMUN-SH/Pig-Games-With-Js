@@ -1,4 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+.final-score{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 520px;
+  color:#555 ;
+  font-size: 18px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  padding: 10px;
+  width: 160px;
+  text-transform: uppercase;
+  border:2px solid #EB4D4D;
+  opacity: 0.6;
+  border-radius: 50px;
+}
+.final-score:focus{outline: none;}
 
 * {
   margin: 0;

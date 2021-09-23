@@ -38,10 +38,19 @@ document.querySelector('.btn--hold').addEventListener('click',function(){
 
     // Update UI
     document.querySelector('#score-' + activeplayer).textContent = scores[activeplayer]
-     
+       // HERE IS TARGET VALUE INITIATED
+       var input = document.querySelector('.final-score').value
+       var winingscore
+    //    validation
 
+    //    UNDEFINE 0,null,String,Are COUrse FALSE VALUE
+    if(input){
+        winingscore = input
+    }else{
+        input = 100
+    }  
     // Check Player Who will Win The Game 
-    if(scores[activeplayer] >=100){
+    if(scores[activeplayer] >=winingscore){
         document.querySelector('#name-' + activeplayer).textContent = "Winner!"
         document.querySelector('.dice').style.display = 'none'
         document.querySelector('.player-' + activeplayer + '-panel').classList.add('winner')
